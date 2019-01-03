@@ -4,19 +4,19 @@ self.__precacheManifest = [
     "url": "/Twitch-App/static/js/runtime~main.196b4f3a.js"
   },
   {
-    "revision": "cf8897355f346e85652f",
-    "url": "/Twitch-App/static/js/main.cf889735.chunk.js"
+    "revision": "a8a30e980fef966001a3",
+    "url": "/Twitch-App/static/js/main.a8a30e98.chunk.js"
   },
   {
     "revision": "b5d12cf8bac00105ad44",
     "url": "/Twitch-App/static/js/1.b5d12cf8.chunk.js"
   },
   {
-    "revision": "cf8897355f346e85652f",
-    "url": "/Twitch-App/static/css/main.f15bd5bf.chunk.css"
+    "revision": "a8a30e980fef966001a3",
+    "url": "/Twitch-App/static/css/main.9454b2f3.chunk.css"
   },
   {
-    "revision": "98c385535b26e5b3fee870b4a099c8f8",
+    "revision": "10c9b78b5b7587a0489bee7a3e1caefa",
     "url": "/Twitch-App/index.html"
   }
 ];
