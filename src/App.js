@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import $ from 'jquery'; 
 import './App.css';
 import Suggestions from './Suggestions';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
-
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 
 library.add(faSearch)
 
-//const URL = 'https://api.twitch.tv/helix/users';
 const URL = 'https://api.twitch.tv/kraken/search/channels';
 let headers = new Headers();
 headers.append('Accept', 'application/vnd.twitchtv.v5+json');
@@ -23,7 +23,16 @@ state = {
   query: '',
   results: [],
   streams: [],
+  openedModal: null,
 }
+
+onOpenModal = id => {
+  this.setState({ openedModal: id });
+};
+
+onCloseModal = () => {
+  this.setState({ openedModal: null });
+};
 
 componentDidMount(){
   fetch('https://api.twitch.tv/kraken/streams?limit=12', { headers: { 'Accept' : 'application/vnd.twitchtv.v5+json', 'Client-ID': 'ut67uxo8b0gr6hs2f0cyu596di1lcg' } })
@@ -33,7 +42,6 @@ componentDidMount(){
 } 
 
 getInfo = () => {
-  //axios.get(`${URL}?login=${this.state.query}`, { headers: { 'Client-ID': 'ut67uxo8b0gr6hs2f0cyu596di1lcg' } })
   axios.get(`${URL}?query=${this.state.query}&limit=5`, { headers: { 'Accept' : 'application/vnd.twitchtv.v5+json', 'Client-ID': 'ut67uxo8b0gr6hs2f0cyu596di1lcg' } })
     .then(({ data }) => {
       this.setState({
@@ -41,6 +49,7 @@ getInfo = () => {
       })
       console.log(this.state.results);
     })
+    
 }
 
 
@@ -50,17 +59,16 @@ handleInputChange = () => {
     query: this.search.value
   }, () => {
     if (this.state.query && this.state.query.length > 1) {
-      /*if (this.state.query.length % 2 === 0) {*/
+      $('.users').show();
         this.getInfo()
-      /*}*/
     } else if (!this.state.query) {
-     
+      $('.users').hide();
     }
   })
 }
 
   render() {
-    const { streams } = this.state;
+    const { streams, open, openedModal } = this.state;
     return (
       <div className="App">
       <h1>Twitch React App</h1>
@@ -81,8 +89,10 @@ handleInputChange = () => {
             {streams
             .sort((a, b) => b.channel.followers - a.channel.followers)
               .map(res => (
-                  <div className="stream-card">
-                    <a href={res.channel.url}>
+                
+                  <div key={res._id} className="stream-card">
+                    
+                    <a onClick={() => this.onOpenModal(res._id)}>
                     <div className="stream-thumbnail">
                       <img src={res.preview.medium}/>
                     </div>
@@ -102,14 +112,32 @@ handleInputChange = () => {
                       </div>
                     </div>
                     </a>
+
+                    <Modal
+                        isOpen={this.state.openedModal === res._id}
+                        toggle={this.closeModal}
+                      >
+                        <ModalHeader>
+                        <Button className="close" onClick={this.onCloseModal}>X</Button>
+                        </ModalHeader>
+                        <ModalBody>
+                        <iframe src={`https://player.twitch.tv/?channel=${res.channel.display_name}`} frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620"></iframe>
+                          <br />
+                        </ModalBody>
+                        
+                      </Modal>
+                  
                   </div>
               ))
-            
+              
             }
+              
+            
           </div>
-          
+          {/*<iframe src="https://player.twitch.tv/?channel=ninja" frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620"></iframe><a href="https://www.twitch.tv/ninja?tt_content=text_link&tt_medium=live_embed" >Watch live video from Ninja on www.twitch.tv</a>*/}
 
       </div>
+      <footer>Copyright © 2019 Nikolas Spendik</footer>
     </div>
     );
   }
