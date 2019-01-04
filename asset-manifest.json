@@ -1,13 +1,13 @@
 {
-  "main.css": "/Twitch-App/static/css/main.9454b2f3.chunk.css",
-  "main.js": "/Twitch-App/static/js/main.a8a30e98.chunk.js",
-  "main.js.map": "/Twitch-App/static/js/main.a8a30e98.chunk.js.map",
-  "static/js/1.b5d12cf8.chunk.js": "/Twitch-App/static/js/1.b5d12cf8.chunk.js",
-  "static/js/1.b5d12cf8.chunk.js.map": "/Twitch-App/static/js/1.b5d12cf8.chunk.js.map",
+  "main.css": "/Twitch-App/static/css/main.967a59af.chunk.css",
+  "main.js": "/Twitch-App/static/js/main.8f65489b.chunk.js",
+  "main.js.map": "/Twitch-App/static/js/main.8f65489b.chunk.js.map",
+  "static/js/1.25b353fd.chunk.js": "/Twitch-App/static/js/1.25b353fd.chunk.js",
+  "static/js/1.25b353fd.chunk.js.map": "/Twitch-App/static/js/1.25b353fd.chunk.js.map",
   "runtime~main.js": "/Twitch-App/static/js/runtime~main.196b4f3a.js",
   "runtime~main.js.map": "/Twitch-App/static/js/runtime~main.196b4f3a.js.map",
-  "static/css/main.9454b2f3.chunk.css.map": "/Twitch-App/static/css/main.9454b2f3.chunk.css.map",
+  "static/css/main.967a59af.chunk.css.map": "/Twitch-App/static/css/main.967a59af.chunk.css.map",
   "index.html": "/Twitch-App/index.html",
-  "precache-manifest.06ce08ecfd2aeba46407590a9dfeb679.js": "/Twitch-App/precache-manifest.06ce08ecfd2aeba46407590a9dfeb679.js",
+  "precache-manifest.a7bceaedcacf9bb0dfbbe09fefb73082.js": "/Twitch-App/precache-manifest.a7bceaedcacf9bb0dfbbe09fefb73082.js",
   "service-worker.js": "/Twitch-App/service-worker.js"
 }
