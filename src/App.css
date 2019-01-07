@@ -27,9 +27,6 @@ background: linear-gradient(to right, #6FB1FC, #4364F7, #0052D4); /* W3C, IE 10+
     width: 240px!important;
     padding: 0 6px;
   }
-  .modal-body iframe{
-    width:375px;
-  }
 }
  h1{
    color:white;
