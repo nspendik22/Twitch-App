@@ -10,6 +10,8 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 
 library.add(faSearch)
 
+
+
 const URL = 'https://api.twitch.tv/kraken/search/channels';
 let headers = new Headers();
 headers.append('Accept', 'application/vnd.twitchtv.v5+json');
@@ -18,13 +20,18 @@ headers.append('Client-ID', 'ut67uxo8b0gr6hs2f0cyu596di1lcg');
 
 
 class App extends Component {
-  
-state = {
-  query: '',
-  results: [],
-  streams: [],
-  openedModal: null,
+constructor(props){
+  super(props);
+
+  this.state = {
+    query: '',
+    results: [],
+    streams: [],
+    openedModal: null,
+  }
 }
+
+
 
 onOpenModal = id => {
   this.setState({ openedModal: id });
@@ -52,8 +59,6 @@ getInfo = () => {
     
 }
 
-
-
 handleInputChange = () => {
   this.setState({
     query: this.search.value
@@ -67,15 +72,19 @@ handleInputChange = () => {
   })
 }
 
+
   render() {
-    const { streams, open, openedModal } = this.state;
+    const { streams } = this.state;
     return (
       <div className="App">
+
       <h1>Twitch React App</h1>
       <div className="wrapper">
+        <form>
         <input type="text" name="" className="search-txt" placeholder="Search for Channels..." ref={input => this.search = input}
-          onChange={this.handleInputChange}/>
-        
+          onChange={this.handleInputChange}
+          />
+        </form>
         <a className="search-btn">
         <FontAwesomeIcon icon="search" />
         </a>
@@ -121,8 +130,9 @@ handleInputChange = () => {
                         <Button className="close" onClick={this.onCloseModal}>X</Button>
                         </ModalHeader>
                         <ModalBody>
-                        <iframe src={`https://player.twitch.tv/?channel=${res.channel.display_name}`} frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620"></iframe>
-                          <br />
+                        <div className="resp-container"> 
+                        <iframe className="resp-iframe" src={`https://player.twitch.tv/?channel=${res.channel.display_name}`} frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620"></iframe>
+                        </div>
                         </ModalBody>
                         
                       </Modal>
@@ -134,8 +144,6 @@ handleInputChange = () => {
               
             
           </div>
-          {/*<iframe src="https://player.twitch.tv/?channel=ninja" frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620"></iframe><a href="https://www.twitch.tv/ninja?tt_content=text_link&tt_medium=live_embed" >Watch live video from Ninja on www.twitch.tv</a>*/}
-
       </div>
       <footer>Copyright © 2019 Nikolas Spendik</footer>
     </div>

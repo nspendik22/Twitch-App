@@ -3,7 +3,6 @@ import {Link} from 'react-router-dom'
 import { faYenSign } from '@fortawesome/free-solid-svg-icons';
 
 
-
 const Suggestions = (props) => {
 
   const options = props.results
